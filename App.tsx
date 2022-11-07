@@ -21,7 +21,7 @@ import Navigation from './src/navigation/navigaiton';
  * 4. Creating Following/Followers component - 30 minutes
  * 5. Creating Search Component with user searching funcitonality - 30 minutes
  * 6. Implementing user search / user followings APIs - 30 minutes
- * 7. ScrollView List => User && User => Follows Page navigation setting up - 30 minutes
+ * 7. FlatList => User && User => Follows Page navigation setting up - 50 minutes
  * 8. making it prettier - 30 minutes
  * 9. Refresh on pull - 10 minutes
  * 10. Android fixes - 30 minutes
