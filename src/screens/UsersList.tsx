@@ -2,7 +2,14 @@
 import {useNavigation, useRoute} from '@react-navigation/core';
 import axios from 'axios';
 import {useCallback, useEffect, useState} from 'react';
-import {StyleSheet, Text, View, ScrollView, RefreshControl} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  RefreshControl,
+  FlatList,
+} from 'react-native';
 import {User} from '../components/User';
 
 export const UsersList = () => {
@@ -19,30 +26,26 @@ export const UsersList = () => {
       message: null,
     },
   ]);
-  const [refreshing, setRefreshing] = useState(false);
-
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 500);
-  }, []);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     axios
-      .get(`https://api.github.com/users/${params.user.login}/${params.type}`, {
-        headers: {
-          Authorization: `Bearer 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`,
+      .get(
+        `https://api.github.com/users/${params.user.login}/${params.type}?per_page=30&page=${page}`,
+        {
+          headers: {
+            Authorization: `Bearer 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`,
+          },
         },
-      })
+      )
       .then(res => {
         console.log(res, 'result from UsersList effect');
-        setData(res.data);
+        setData(prev => [...prev, ...res.data]);
       })
       .catch(err => {
         console.log(err, 'error from UsersList effect');
       });
-  }, []);
+  }, [page]);
 
   const handleUserPress = user => {
     navigate('Follows', {user});
@@ -50,7 +53,28 @@ export const UsersList = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView
+      <FlatList
+        data={data}
+        keyExtractor={item => item.login}
+        ListEmptyComponent={<Text>Not Found</Text>}
+        onEndReachedThreshold={0.2}
+        onEndReached={() => setPage(prev => ++prev)}
+        renderItem={({item}) => {
+          return !item.login ? null : (
+            <View style={styles.userContainer}>
+              <User
+                avatar_url={item.avatar_url}
+                followers={item.followers}
+                following={item.following}
+                login={item.login}
+                name={item.name}
+                onPress={() => handleUserPress(item)}
+              />
+            </View>
+          );
+        }}
+      />
+      {/* <ScrollView
         contentContainerStyle={styles.scrollView}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -71,7 +95,7 @@ export const UsersList = () => {
             )}
           </View>
         ))}
-      </ScrollView>
+      </ScrollView> */}
     </View>
   );
 };

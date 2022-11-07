@@ -24,6 +24,7 @@ import Navigation from './src/navigation/navigaiton';
  * 7. ScrollView List => User && User => Follows Page navigation setting up - 30 minutes
  * 8. making it prettier - 30 minutes
  * 9. Refresh on pull - 10 minutes
+ * 10. Android fixes - 30 minutes
  */
 
 const App = () => {
