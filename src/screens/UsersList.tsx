@@ -30,7 +30,11 @@ export const UsersList = () => {
 
   useEffect(() => {
     axios
-      .get(`https://api.github.com/users/${params.user.login}/${params.type}`)
+      .get(`https://api.github.com/users/${params.user.login}/${params.type}`, {
+        headers: {
+          Authorization: `Bearer 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`,
+        },
+      })
       .then(res => {
         console.log(res, 'result from UsersList effect');
         setData(res.data);
@@ -53,14 +57,18 @@ export const UsersList = () => {
         }>
         {data.map(user => (
           <View style={styles.userContainer}>
-            <User
-              avatar_url={user.avatar_url}
-              followers={user.followers}
-              following={user.following}
-              login={user.login}
-              name={user.name}
-              onPress={() => handleUserPress(user)}
-            />
+            {!user.login ? (
+              <Text>Not Found</Text>
+            ) : (
+              <User
+                avatar_url={user.avatar_url}
+                followers={user.followers}
+                following={user.following}
+                login={user.login}
+                name={user.name}
+                onPress={() => handleUserPress(user)}
+              />
+            )}
           </View>
         ))}
       </ScrollView>

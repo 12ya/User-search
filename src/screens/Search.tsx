@@ -27,7 +27,11 @@ export const Search = () => {
 
   const findUser = () => {
     axios
-      .get(`https://api.github.com/users/${input}`)
+      .get(`https://api.github.com/users/${input}`, {
+        headers: {
+          Authorization: `Bearer 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`,
+        },
+      })
       .then(res => {
         console.log(res.data, 'result from findUser function');
         setUser(res.data);

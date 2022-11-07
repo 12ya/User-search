@@ -22,7 +22,11 @@ export const Follows = () => {
 
   const getFollows = () => {
     axios
-      .get(`https://api.github.com/users/${params.user.login}`)
+      .get(`https://api.github.com/users/${params.user.login}`, {
+        headers: {
+          Authorization: `Bearer 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`,
+        },
+      })
       .then(res => {
         console.log(res.data, 'result from findUser function');
         setData({followers: res.data.followers, following: res.data.following});
