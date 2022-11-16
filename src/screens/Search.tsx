@@ -59,7 +59,7 @@ export const Search = () => {
           placeholderTextColor="white"
         />
         <TouchableOpacity style={styles.button} onPress={findUser}>
-          <Text>Search</Text>
+          <Text style={styles.buttonText}>Search</Text>
         </TouchableOpacity>
       </View>
 
@@ -79,6 +79,10 @@ export const Search = () => {
   );
 };
 
+
+/**
+ * UI palette is from https://colorhunt.co/palette/393e466d9886f2e7d5f7f7f7
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -92,16 +96,25 @@ const styles = StyleSheet.create({
   },
   textInput: {
     flex: 2,
-    backgroundColor: 'grey',
+    backgroundColor: '#FFEFD6',
     padding: 20,
     borderRadius: 10,
     marginRight: 20,
+    fontSize: 16,
+    fontWeight: 'bold',
+    borderWidth: 2,
+    borderColor: '#F2DEBA',
+    color: '#3A8891',
+    placeholderColor: 'green',
   },
   button: {
-    borderColor: 'purple',
-    borderWidth: 1,
+    borderColor: '#3A8891',
+    borderWidth: 2,
     paddingVertical: 20,
     padding: 10,
     borderRadius: 10,
+  },
+  buttonText: {
+    color: '#3A8891',
   },
 });
