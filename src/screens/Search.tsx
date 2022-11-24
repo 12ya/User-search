@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import {User} from '../components/User';
+import {TOKEN} from '@env';
 
 import axios from 'axios';
 
@@ -29,7 +30,7 @@ export const Search = () => {
     axios
       .get(`https://api.github.com/users/${input}`, {
         headers: {
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer ${TOKEN}`,
         },
       })
       .then(res => {
@@ -77,7 +78,6 @@ export const Search = () => {
     </View>
   );
 };
-
 
 /**
  * UI palette is from https://colorhunt.co/palette/393e466d9886f2e7d5f7f7f7

@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 import {useIsFocused} from '@react-navigation/native';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import axios from 'axios';
+import {TOKEN} from '@env';
 
 interface IButton {
   title: string;
@@ -24,7 +25,7 @@ export const Follows = () => {
     axios
       .get(`https://api.github.com/users/${params.user.login}`, {
         headers: {
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer ${TOKEN}`,
         },
       })
       .then(res => {

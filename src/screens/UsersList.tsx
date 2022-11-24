@@ -1,16 +1,10 @@
 // import React from 'react';
 import {useNavigation, useRoute} from '@react-navigation/core';
 import axios from 'axios';
-import {useCallback, useEffect, useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  RefreshControl,
-  FlatList,
-} from 'react-native';
+import {useEffect, useState} from 'react';
+import {StyleSheet, Text, View, FlatList} from 'react-native';
 import {User} from '../components/User';
+import {TOKEN} from '@env';
 
 export const UsersList = () => {
   const {params} = useRoute();
@@ -34,7 +28,7 @@ export const UsersList = () => {
         `https://api.github.com/users/${params.user.login}/${params.type}?per_page=30&page=${page}`,
         {
           headers: {
-            Authorization: `Bearer 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`,
+            Authorization: `Bearer ${TOKEN}`,
           },
         },
       )
