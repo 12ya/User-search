@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: '500',
+    color: '#3A8891',
   },
   titleContainer: {
     width: '100%',
@@ -97,6 +98,7 @@ const styles = StyleSheet.create({
     width: '49%',
     alignItems: 'center',
     borderWidth: 2,
+    borderColor: '#3A8891',
     padding: 5,
     paddingVertical: 10,
     borderRadius: 10,

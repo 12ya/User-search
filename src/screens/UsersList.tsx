@@ -103,7 +103,7 @@ export const UsersList = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#FFEFD6',
     padding: 20,
   },
   userContainer: {

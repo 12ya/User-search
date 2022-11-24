@@ -56,7 +56,6 @@ export const Search = () => {
           value={input}
           onChangeText={setInput}
           placeholder="Username"
-          placeholderTextColor="white"
         />
         <TouchableOpacity style={styles.button} onPress={findUser}>
           <Text style={styles.buttonText}>Search</Text>
